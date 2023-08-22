@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get "/", to: "welcome#index"
   get "/studios", to: "studios#index"
   get "/studios/new", to: "studios#new"
+  post "/studios", to: "studios#create"
 end

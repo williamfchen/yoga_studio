@@ -7,4 +7,15 @@ class StudiosController < ApplicationController
   def new
   end
   
+  def create
+    studio = Studio.new({
+      name: params[:name],
+      rating: params[:rating]
+    })
+
+    studio.save
+
+    redirect_to '/studios'
+  end
+
 end
