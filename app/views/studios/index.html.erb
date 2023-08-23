@@ -1,7 +1,7 @@
 <h1><Studio List></h1>
 
 <% @studios.each do |studio| %>
-  <p><%= studio.name %></p>
+  <h3><a href="/studios/<%= studio.id %>"><%= studio.name %></a></h3>
 <% end %>
 
 

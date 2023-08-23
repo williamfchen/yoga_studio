@@ -10,17 +10,15 @@ class StudiosController < ApplicationController
     studio = Studio.new({
       name: params[:name],
       rating: params[:rating],
-      accepting_members: params[:accepting_members] == "on"  # Convert checkbox value to boolean
-  })
+      accepting_members: params.key?(:accepting_members)
+    })
 
-  studio.accepting_members ||= false
-
-  if studio.save
-    redirect_to '/studios'
-  else
-    render 'new'
+    if studio.save
+      redirect_to '/studios'
+    else
+      render 'new'
+    end
   end
-end
 
 
   def show

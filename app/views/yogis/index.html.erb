@@ -1,0 +1,9 @@
+<h1><Yogis></h1>
+
+<% @yogis.each do |yogi| %>
+  <h3><a href="/yogis/<%= yogi.id %>"><%= yogi.name %></a></h3>
+<% end %>
+
+
+<p><a href="/yogis/new">New Yogi</a></p>
+<p><a href="/">Home</a></p>
