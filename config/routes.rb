@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get "/studios", to: "studios#index"
   get "/studios/new", to: "studios#new"
   post "/studios", to: "studios#create"
+  get "/studios/:id", to: "studios#show"
 end

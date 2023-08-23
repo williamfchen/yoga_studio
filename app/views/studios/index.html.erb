@@ -1,7 +1,9 @@
-<h1><List of Studios></h1>
+<h1><Studio List></h1>
 
 <% @studios.each do |studio| %>
-  <h3><%= studio %></h3>
+  <p><%= studio.name %></p>
 <% end %>
 
+
+<p><a href="/studios/new">New Studio</a></p>
 <p><a href="/">Home</a></p>
