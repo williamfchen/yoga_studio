@@ -1,0 +1,14 @@
+<h1>Edit Studio</h1>
+<%= form_with(model: @studio, url: update_studio_path(@studio), method: :patch) do |form| %>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="name">Name:</label>
+  <%= form.text_field :name, required: true %><br><br>
+
+  <label for="rating">Rating:</label>
+  <%= form.number_field :rating, min: 1, max: 5, required: true %><br><br>
+
+  <label for="accepting_members">Accepting Members?</label>
+  <%= form.check_box :accepting_members %><br><br>
+
+  <button type="submit">Update Studio</button>
+<% end %>

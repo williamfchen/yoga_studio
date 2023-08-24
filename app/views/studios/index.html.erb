@@ -1,9 +1,29 @@
-<h1><Studio List></h1>
+<head>
+  <%= link_to 'Home', root_path %>
+  <%= link_to 'Yogis Index', yogis_path %>
+  <%= link_to 'Studios Index', studios_path %>
+</head>
 
-<% @studios.each do |studio| %>
-  <h3><a href="/studios/<%= studio.id %>"><%= studio.name %></a></h3>
-<% end %>
+<h1>Studio Index</h1>
 
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Yogis</th>
+      <th>Created At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @studios.each do |studio| %>
+      <tr>
+        <td><%= link_to studio.name, studio_path(studio) %></td>
+        <td><%= studio.yogis.count %></td>
+        <td><%= studio.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <p><a href="/studios/new">New Studio</a></p>
 <p><a href="/">Home</a></p>

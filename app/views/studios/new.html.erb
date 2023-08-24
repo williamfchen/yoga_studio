@@ -1,3 +1,9 @@
+<head>
+  <%= link_to 'Home', root_path %>
+  <%= link_to 'Yogis Index', yogis_path %>
+  <%= link_to 'Studios Index', studios_path %>
+</head>
+
 <h1>Create New Yoga Studio</h1>
 <form action="/studios" method="post">
   <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">

@@ -25,5 +25,4 @@ class YogisController < ApplicationController
     @yogi = Yogi.find(params[:id])
   end
 
-
 end
