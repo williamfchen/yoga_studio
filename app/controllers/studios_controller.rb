@@ -1,6 +1,6 @@
 class StudiosController < ApplicationController
   def index
-    @studios = Studio.order(created_at: :desc)
+    @studios = Studio.order_by
   end
 
   def new
@@ -11,7 +11,7 @@ class StudiosController < ApplicationController
       name: params[:name],
       rating: params[:rating],
       accepting_members: params.key?(:accepting_members)
-    })
+      })
 
     if studio.save
       redirect_to '/studios'
@@ -22,6 +22,7 @@ class StudiosController < ApplicationController
 
   def show
     @studio = Studio.find(params[:id])
+    @count = @studio.yogis_count
   end
 
   def show_yogis

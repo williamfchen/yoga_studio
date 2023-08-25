@@ -22,6 +22,4 @@ Rails.application.routes.draw do
   post "/yogis", to: "yogis#create"
   get "/yogis/:id", to: "yogis#show"
 
-
-  
 end
