@@ -2,7 +2,7 @@ class Studio < ApplicationRecord
   has_many :yogis
 
   def self.order_by
-    Studio.order("created_at DESC")
+    Studio.order("created_at desc")
   end
 
   def yogis_count

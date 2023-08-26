@@ -1,0 +1,2 @@
+class CreateMat < ApplicationRecord
+end

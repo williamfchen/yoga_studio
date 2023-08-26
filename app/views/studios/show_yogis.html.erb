@@ -1,17 +1,13 @@
-<head>
-  <%= link_to 'Home', root_path %>
-  <%= link_to 'Yogis Index', yogis_path %>
-  <%= link_to 'Studios Index', studios_path %>
-</head>
+
 
 <h1>Yogis at <%= @studio.name %> Studio</h1>
 <ul>
   <% @yogis.each do |yogi| %>
-    <li>
-      <p><%= yogi.name %></p>
-      Age: <%= yogi.age %>
-      Member: <%= yogi.member ? 'Yes' : 'No' %>
-    </li>
+      <p>Name: <%= @yogi.name %></p>
+      <p>Age: <%= @yogi.age %></p>
+      <p>Member? <%= @yogi.member %></p>
+      <p>Created Date: <%= @yogi.created_at %></p>
+      <p>Updated Date: <%= @yogi.updated_at %></p>
   <% end %>
 </ul>
 <p><%= link_to 'Create Yogi', add_yogi_path(@studio) %></p>
