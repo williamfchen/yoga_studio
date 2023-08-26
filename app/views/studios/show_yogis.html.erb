@@ -1,14 +1,25 @@
+<h1><%= @studio.name %> Yogis</h1>
+<h3>Studio ID:<%= @studio.id %></h3>
 
-
-<h1>Yogis at <%= @studio.name %> Studio</h1>
-<ul>
-  <% @yogis.each do |yogi| %>
-      <p>Name: <%= @yogi.name %></p>
-      <p>Age: <%= @yogi.age %></p>
-      <p>Member? <%= @yogi.member %></p>
-      <p>Created Date: <%= @yogi.created_at %></p>
-      <p>Updated Date: <%= @yogi.updated_at %></p>
-  <% end %>
-</ul>
-<p><%= link_to 'Create Yogi', add_yogi_path(@studio) %></p>
-<p><%= link_to 'Back to Studio', studio_path(@studio) %></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Member?</th>
+      <th>Created At</th>
+      <th>Updated At</th>
+    </tr>
+  <thead>
+  <tbody>
+    <% @yogis.each do |yogi| %>
+      <tr>
+        <td><%= yogi.name %></td>
+        <td><%= yogi.age %></td>
+        <td><%= yogi.member? %></td>
+        <td><%= yogi.created_at %></td>
+        <td><%= yogi.updated_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
