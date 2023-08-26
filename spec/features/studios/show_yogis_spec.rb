@@ -18,7 +18,6 @@ RSpec.describe 'show studio yogis' do
         expect(page).to have_content(antoine.name)
         expect(page).to have_content(antoine.age)
         expect(page).to have_content(antoine.member?)
-        save_and_open_page
       end
     end
   end
