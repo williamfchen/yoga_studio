@@ -26,6 +26,13 @@ RSpec.describe 'studio show page' do
         expect(page).to have_content("Yogis: #{studio1.yogis_count}")
       end
 
+      it 'US10 displays a link to take me to parents child table name' do
+        studio = Studio.create!(name: "BSY", rating: 5, accepting_members?: true)
+
+        visit "/studios/#{studio.id}"
+
+        expect(page).to have_link('View Yogis', href: studio_yogis_path(studio))
+      end
     end
   end
 
