@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "/", to: "welcome#index", as: :root
 
   get "/studios", to: "studios#index", as: :studios
-  get "/studios/new", to: "studios#new"
+  get "/studios/new", to: "studios#new", as: :new_studio
   post "/studios", to: "studios#create"
   get "/studios/:id", to: "studios#show", as: :studio
   get "/studios/:id/yogis", to: "studios#show_yogis", as: :studio_yogis

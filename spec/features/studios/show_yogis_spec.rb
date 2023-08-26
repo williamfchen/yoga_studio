@@ -19,6 +19,7 @@ RSpec.describe 'show studio yogis' do
         expect(page).to have_content(antoine.age)
         expect(page).to have_content(antoine.member?)
       end
+
     end
   end
 
