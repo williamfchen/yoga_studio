@@ -16,6 +16,16 @@ RSpec.describe 'studio show page' do
         expect(page).to have_content(studio1.updated_at)
         expect(page).to_not have_content(studio2.name)
       end
+
+      it 'US7 displays the child count' do
+        studio1 = Studio.create!(name: "BSY", rating: 5, accepting_members?: true)
+        tyler = Yogi.create!(name: "Tyler", age: 28, member?: true, studio_id: studio1.id)
+        antoine = Yogi.create!(name: "Antoine", age: 32, member?: false, studio_id: studio1.id)
+
+        visit "/studios/#{studio1.id}"
+        expect(page).to have_content("Yogis: #{studio1.yogis_count}")
+      end
+
     end
   end
 
