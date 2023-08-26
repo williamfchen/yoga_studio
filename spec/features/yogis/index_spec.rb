@@ -9,7 +9,7 @@ RSpec.describe 'displays index page' do
         antoine = Yogi.create!(name: "Antoine", age: 32, member?: false, studio_id: studio1.id)
 
         visit "/yogis"
-        save_and_open_page
+        
         expect(page).to have_content(tyler.name)
         expect(page).to have_content(tyler.age)
         expect(page).to have_content(tyler.member?)
