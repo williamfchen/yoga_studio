@@ -1,17 +1,14 @@
-
 <h1>Create New Yoga Studio</h1>
 <form action="/studios" method="post">
   <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required><br><br>
+    <label for="studio_name">Name:</label>
+    <input type="text" id="studio_name" name="studio[name]" required><br><br>
     
     <label for="rating">Rating:</label>
-    <input type="number" id="rating" name="rating" min="1" max="5" required><br><br>
+    <input type="number" id="rating" name="studio[rating]" min="1" max="5" required><br><br>
     
     <label for="accepting_members">Accepting Members?</label>
-    <input type="checkbox" id="accepting_members" name="accepting_members"><br><br>
+    <input type="checkbox" id="accepting_members" name="studio[accepting_members]"><br><br>
     
     <button type="submit">Create Studio</button>
 </form>
-
-<p><a href="/">Home</a></p>

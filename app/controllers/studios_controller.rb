@@ -7,12 +7,14 @@ class StudiosController < ApplicationController
   end
   
   def create
-    studio = Studio.new({
-      name: params[:name],
-      rating: params[:rating],
-      accepting_members: params.key?(:accepting_members)
-      })
+    # studio = Studio.new({
+    #   name: params[:name],
+    #   rating: params[:rating],
+    #   accepting_members: params.key?(:accepting_members)
+    #   })
 
+    studio = Studio.new(studio_params)
+    
     if studio.save
       redirect_to '/studios'
     else
