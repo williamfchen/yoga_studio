@@ -1,5 +1,4 @@
-
-<h1>Studio Index</h1>
+<h1>Studios</h1>
 
 <table>
   <thead>
@@ -14,11 +13,8 @@
       <tr>
         <td><%= link_to studio.name, studio_path(studio) %></td>
         <td><%= studio.yogis.count %></td>
-        <td><%= studio.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+        <td><%= studio.created_at %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<p><a href="/studios/new">New Studio</a></p>
-<p><a href="/">Home</a></p>

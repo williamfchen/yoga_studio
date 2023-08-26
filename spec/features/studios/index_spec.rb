@@ -9,8 +9,8 @@ RSpec.describe 'studio index page' do
 
     describe 'when visiting /parents' do
       it 'US1 displays the name of each parent record in the system' do
-        studio1 = Studio.create!(name: "BSY", rating: 5, accepting_members: true)
-        studio2 = Studio.create!(name: "Flex", rating: 4, accepting_members: false)
+        studio1 = Studio.create!(name: "BSY", rating: 5, accepting_members?: true)
+        studio2 = Studio.create!(name: "Flex", rating: 4, accepting_members?: false)
 
         visit "/studios"
 

@@ -1,10 +1,29 @@
+<h1>Yogis</h1>
 
-<h1><Yogis></h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Member?</th>
+      <th>Studio ID</th>
+      <th>Created At</th>
+      <th>Updated At</th>
+    </tr>
+  <thead>
+  <tbody>
+    <% @yogis.each do |yogi| %>
+      <tr>
+        <td><%= yogi.name %></td>
+        <td><%= yogi.age %></td>
+        <td><%= yogi.member? %></td>
+        <td><%= yogi.studio_id %></td>
+        <td><%= yogi.created_at %></td>
+        <td><%= yogi.updated_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<% @yogis.each do |yogi| %>
-  <h3><a href="/yogis/<%= yogi.id %>"><%= yogi.name %></a></h3>
-<% end %>
 
 
-<p><a href="/yogis/new">New Yogi</a></p>
-<p><a href="/">Home</a></p>
