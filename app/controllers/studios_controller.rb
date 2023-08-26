@@ -51,7 +51,7 @@ class StudiosController < ApplicationController
   private
 
   def studio_params
-    params.require(:studio).permit(:name, :rating, :accepting_members)
+    params.require(:studio).permit(:name, :rating, :accepting_members?)
   end
 
 
