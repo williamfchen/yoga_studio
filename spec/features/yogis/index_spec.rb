@@ -30,6 +30,17 @@ RSpec.describe 'displays index page' do
         expect(page).to have_content(tyler.name)
         expect(page).not_to have_content(antoine.name)
       end
+
+      scenario 'US18.1 see a link that directs to the yogi edit page' do
+        studio1 = Studio.create!(name: "BSY", rating: 5, accepting_members: true)
+        tyler = Yogi.create!(name: "Tyler", age: 28, member: true, studio_id: studio1.id)
+        antoine = Yogi.create!(name: "Antoine", age: 32, member: true, studio_id: studio1.id)
+
+        visit "/yogis"
+        
+        expect(page).to have_link('Edit', href: edit_yogi_path(tyler))
+        expect(page).to have_link('Edit', href: edit_yogi_path(antoine))
+      end
     end
   end
 

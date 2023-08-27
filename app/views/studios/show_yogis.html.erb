@@ -9,6 +9,7 @@
       <th>Member?</th>
       <th>Created At</th>
       <th>Updated At</th>
+      <th>Update</th>
     </tr>
   <thead>
   <tbody>
@@ -19,6 +20,7 @@
         <td><%= yogi.member? ? 'Yes' : 'No' %></td>
         <td><%= yogi.created_at %></td>
         <td><%= yogi.updated_at %></td>
+        <td><%= link_to 'Edit', edit_yogi_path(yogi) %>
       </tr>
     <% end %>
   </tbody>

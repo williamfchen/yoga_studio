@@ -23,7 +23,7 @@ class StudiosController < ApplicationController
 
   def show_yogis
     @studio = Studio.find(params[:id])
-    @yogis = @studio.yogis
+    @yogis = @studio.yogis.order_by_name
 end
 
   def edit

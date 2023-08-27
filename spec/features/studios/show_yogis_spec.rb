@@ -43,6 +43,16 @@ RSpec.feature 'show studio yogis' do
         expect(page).to have_content('Yes')
       end
 
+      scenario 'US18.2 see a link that directs to the yogi edit page' do
+        studio1 = Studio.create!(name: "BSY", rating: 5, accepting_members: true)
+        tyler = Yogi.create!(name: "Tyler", age: 28, member: true, studio_id: studio1.id)
+        antoine = Yogi.create!(name: "Antoine", age: 32, member: false, studio_id: studio1.id)
+
+        visit "/studios/#{studio1.id}/yogis"
+
+        expect(page).to have_link('Edit', href: edit_yogi_path(tyler))
+        expect(page).to have_link('Edit', href: edit_yogi_path(antoine))
+      end
     end
   end
 
