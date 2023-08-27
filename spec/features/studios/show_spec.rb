@@ -31,7 +31,7 @@ RSpec.feature 'studio show page' do
 
         visit "/studios/#{studio.id}"
 
-        expect(page).to have_link('View Yogis', href: studio_yogis_path(studio))
+        expect(page).to have_link('View Yogis', href: show_studio_yogis_path(studio))
       end
 
       scenario 'US12 displays a link to update parent with a form' do
@@ -44,7 +44,7 @@ RSpec.feature 'studio show page' do
         click_link('Update Studio')
 
         expect(page).to have_selector('form')
-        save_and_open_page
+
         fill_in 'studio[name]', with: 'Stretch'
         fill_in 'studio[rating]', with: '4'
         uncheck 'studio[accepting_members]'

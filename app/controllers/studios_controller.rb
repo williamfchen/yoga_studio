@@ -7,12 +7,6 @@ class StudiosController < ApplicationController
   end
   
   def create
-    # studio = Studio.new({
-    #   name: params[:name],
-    #   rating: params[:rating],
-    #   accepting_members: params.key?(:accepting_members)
-    #   })
-
     studio = Studio.new(studio_params)
     
     if studio.save
@@ -46,15 +40,29 @@ class StudiosController < ApplicationController
   end
 
   def add_yogi
+    @studio = Studio.find(params[:id])
+    @yogi = Yogi.new
+  end
+
+  def create_yogi
+    @studio = Studio.find(params[:id])
+    @yogi = @studio.yogis.build(yogi_params)
+
+    if @yogi.save
+      redirect_to show_studio_yogis_path(@studio)
+    else
+      render 'add_yogi'
+    end
   end
 
   private
 
   def studio_params
-    if params[:studio].present? && !params[:studio].key?(:accepting_members)
-      params[:studio][:accepting_members] = false
-    end
-  
     params.require(:studio).permit(:name, :rating, :accepting_members)
   end
+
+  def yogi_params
+    params.require(:yogi).permit(:name, :age, :member)
+  end
+
 end

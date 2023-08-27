@@ -8,6 +8,7 @@
   <%= form.number_field :rating, min: 1, max: 5, required: true %><br><br>
 
   <label for="accepting_members">Accepting Members?</label>
+  <%= form.hidden_field :accepting_members, value: false %>
   <%= form.check_box :accepting_members %><br><br>
 
   <button type="submit">Update Studio</button>

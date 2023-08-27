@@ -20,7 +20,6 @@ class YogisController < ApplicationController
     end
   end
 
-
   def show
     @yogi = Yogi.find(params[:id])
   end

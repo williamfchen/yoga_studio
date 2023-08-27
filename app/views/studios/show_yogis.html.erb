@@ -16,10 +16,12 @@
       <tr>
         <td><%= yogi.name %></td>
         <td><%= yogi.age %></td>
-        <td><%= yogi.member %></td>
+        <td><%= yogi.member? ? 'Yes' : 'No' %></td>
         <td><%= yogi.created_at %></td>
         <td><%= yogi.updated_at %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<p><%= link_to 'Add Yogi', add_yogi_path(@studio) %></p>
