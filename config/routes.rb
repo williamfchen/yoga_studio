@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   get '/studios/:id/edit', to: 'studios#edit', as: :edit_studio
   patch '/studios/:id', to: 'studios#update', as: :update_studio
 
-  get "/yogis", to: "yogis#index"
-  get "/yogis/new", to: "yogis#new"
+  get "/yogis", to: "yogis#index", as: :yogis
   post "/yogis", to: "yogis#create"
   get "/yogis/:id", to: "yogis#show", as: :yogi
   get "yogis/:id/edit", to: "yogis#edit", as: :edit_yogi

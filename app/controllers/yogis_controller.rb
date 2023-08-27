@@ -1,6 +1,6 @@
 class YogisController < ApplicationController
   def index
-    @yogis = Yogi.all
+    @yogis = Yogi.members
   end
 
   def new

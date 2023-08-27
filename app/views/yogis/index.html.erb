@@ -16,7 +16,7 @@
       <tr>
         <td><%= link_to yogi.name, yogi_path(yogi) %></td>
         <td><%= yogi.age %></td>
-        <td><%= yogi.member %></td>
+        <td><%= yogi.member? ? 'Yes' : 'No' %></td>
         <td><%= yogi.studio_id %></td>
         <td><%= yogi.created_at %></td>
         <td><%= yogi.updated_at %></td>
