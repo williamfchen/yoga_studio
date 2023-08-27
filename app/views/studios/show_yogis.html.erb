@@ -1,6 +1,6 @@
 <h1><%= @studio.name %> Yogis</h1>
 <h3>Studio ID: <%= @studio.id %></h3>
-
+<%= link_to 'Sort by Name', show_studio_yogis_path(@studio, sort: 'name') %>
 <table>
   <thead>
     <tr>

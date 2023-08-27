@@ -6,6 +6,7 @@
       <th>Name</th>
       <th>Yogis</th>
       <th>Created At</th>
+      <th>Update</th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +15,7 @@
         <td><%= link_to studio.name, studio_path(studio) %></td>
         <td><%= studio.yogis.count %></td>
         <td><%= studio.created_at %></td>
+        <td><%= link_to 'Edit', edit_studio_path(studio) %>
       </tr>
     <% end %>
   </tbody>

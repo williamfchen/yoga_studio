@@ -46,6 +46,14 @@ RSpec.describe 'studio index page' do
         expect(page).to have_current_path(studios_path, ignore_query: true)
         expect(page).to have_content('BSY')
       end
+
+      scenario 'US17 see a link that directs to the studio edit page' do
+        studio = Studio.create!(name: "BSY", rating: 5, accepting_members: true)
+
+        visit "/studios"
+
+        expect(page).to have_link('Edit', href: edit_studio_path(studio))
+      end
     end
   end
 

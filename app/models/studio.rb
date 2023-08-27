@@ -8,4 +8,8 @@ class Studio < ApplicationRecord
   def yogis_count
     self.yogis.count
   end
+
+  def order_by_name
+    Yogi.order(:name)
+  end
 end

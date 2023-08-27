@@ -24,7 +24,7 @@ class StudiosController < ApplicationController
   def show_yogis
     @studio = Studio.find(params[:id])
     @yogis = @studio.yogis
-  end
+end
 
   def edit
     @studio = Studio.find(params[:id])
