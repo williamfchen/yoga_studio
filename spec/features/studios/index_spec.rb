@@ -4,8 +4,8 @@ RSpec.describe 'studio index page' do
   describe 'as a visitor' do
     describe 'when visiting /parents' do
       it 'US1 displays the name of each parent record in the system' do
-        studio1 = Studio.create!(name: "BSY", rating: 5, accepting_members?: true)
-        studio2 = Studio.create!(name: "Flex", rating: 5, accepting_members?: true)
+        studio1 = Studio.create!(name: "BSY", rating: 5, accepting_members: true)
+        studio2 = Studio.create!(name: "Flex", rating: 5, accepting_members: true)
 
         visit "/studios"
 
@@ -14,8 +14,8 @@ RSpec.describe 'studio index page' do
       end
 
       it 'US6 displays studio names by descending created_at' do
-        studio1 = Studio.create!(name: "BSY", rating: 5, accepting_members?: true)
-        studio2 = Studio.create!(name: "Flex", rating: 5, accepting_members?: true, created_at: 1.day.ago)
+        studio1 = Studio.create!(name: "BSY", rating: 5, accepting_members: true)
+        studio2 = Studio.create!(name: "Flex", rating: 5, accepting_members: true, created_at: 1.day.ago)
 
         visit "/studios"
 
@@ -39,7 +39,7 @@ RSpec.describe 'studio index page' do
 
         fill_in 'studio_name', with: 'BSY'
         fill_in 'rating', with: 5
-        check 'accepting_members?'
+        check 'accepting_members'
 
         click_button 'Create Studio'
 

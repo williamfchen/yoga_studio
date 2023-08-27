@@ -51,8 +51,10 @@ class StudiosController < ApplicationController
   private
 
   def studio_params
-    params.require(:studio).permit(:name, :rating, :accepting_members?)
+    if params[:studio].present? && !params[:studio].key?(:accepting_members)
+      params[:studio][:accepting_members] = false
+    end
+  
+    params.require(:studio).permit(:name, :rating, :accepting_members)
   end
-
-
 end
