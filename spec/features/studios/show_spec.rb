@@ -11,7 +11,7 @@ RSpec.feature 'studio show page' do
 
         expect(page).to have_content(studio1.name)
         expect(page).to have_content(studio1.rating)
-        expect(page).to have_content(studio1.accepting_members)
+        expect(page).to have_content('Yes')
         expect(page).to have_content(studio1.created_at)
         expect(page).to have_content(studio1.updated_at)
         expect(page).to_not have_content(studio2.name)
@@ -54,7 +54,7 @@ RSpec.feature 'studio show page' do
         expect(page).to have_current_path(studio_path(studio))
         expect(page).to have_content('Name: Stretch')
         expect(page).to have_content('Rating: 4')
-        expect(page).to have_content('Accepting Members? false')
+        expect(page).to have_content('Accepting Members? No')
       end
     end
   end

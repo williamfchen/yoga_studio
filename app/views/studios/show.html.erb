@@ -2,10 +2,10 @@
 
 <p>Name: <%= @studio.name %></p>
 <p>Rating: <%= @studio.rating %></p>
-<p>Accepting Members? <%= @studio.accepting_members %></p>
+<p>Accepting Members? <%= @studio.accepting_members? ? 'Yes' : 'No' %></p>
 <p>Yogis: <%= @studio.yogis_count %></p>
 <p>Created Date: <%= @studio.created_at %></p>
 <p>Updated Date: <%= @studio.updated_at %></p>
-<%= link_to 'Update Studio', edit_studio_path(@studio) %>
 
+<%= link_to 'Update Studio', edit_studio_path(@studio) %>
 <%= link_to 'View Yogis', show_studio_yogis_path(@studio) %>

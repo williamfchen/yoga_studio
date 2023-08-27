@@ -14,7 +14,7 @@
   <tbody>
     <% @yogis.each do |yogi| %>
       <tr>
-        <td><%= yogi.name %></td>
+        <td><%= link_to yogi.name, yogi_path(yogi) %></td>
         <td><%= yogi.age %></td>
         <td><%= yogi.member %></td>
         <td><%= yogi.studio_id %></td>

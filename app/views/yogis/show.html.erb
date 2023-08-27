@@ -3,7 +3,8 @@
 <p>Name: <%= @yogi.name %></p>
 <p>Age: <%= @yogi.age %></p>
 <p>Studio ID: <%= @yogi.studio_id %></p>
-<p>Member? <%= @yogi.member %></p>
+<p>Member? <%= @yogi.member? ? 'Yes' : 'No' %></p>
 <p>Created Date: <%= @yogi.created_at %></p>
 <p>Updated Date: <%= @yogi.updated_at %></p>
 
+<p><%= link_to 'Update Yogi', edit_yogi_path(@yogi) %></p>

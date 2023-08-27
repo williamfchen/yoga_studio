@@ -1,4 +1,4 @@
-<h1>Edit Studio</h1>
+<h1>Edit <%= @studio.name %></h1>
 <%= form_with(model: @studio, url: update_studio_path(@studio), method: :patch) do |form| %>
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <label for="name">Name:</label>

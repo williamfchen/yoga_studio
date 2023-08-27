@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   get "/yogis", to: "yogis#index"
   get "/yogis/new", to: "yogis#new"
   post "/yogis", to: "yogis#create"
-  get "/yogis/:id", to: "yogis#show"
+  get "/yogis/:id", to: "yogis#show", as: :yogi
+  get "yogis/:id/edit", to: "yogis#edit", as: :edit_yogi
+  patch "yogis/:id", to: "yogis#update", as: :update_yogi
 end
