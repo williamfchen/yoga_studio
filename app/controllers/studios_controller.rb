@@ -55,6 +55,12 @@ end
     end
   end
 
+  def destroy
+    @studio = Studio.find(params[:id])
+    @studio.destroy
+    redirect_to '/studios'
+  end
+
   private
 
   def studio_params
@@ -64,5 +70,6 @@ end
   def yogi_params
     params.require(:yogi).permit(:name, :age, :member)
   end
+
 
 end

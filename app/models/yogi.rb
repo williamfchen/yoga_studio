@@ -4,6 +4,4 @@ class Yogi < ApplicationRecord
   scope :members, -> { where(member: true) }
 
   scope :order_by_name, -> { order(:name) }
-  
-
 end

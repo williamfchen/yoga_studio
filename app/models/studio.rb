@@ -1,5 +1,5 @@
 class Studio < ApplicationRecord
-  has_many :yogis
+  has_many :yogis, dependent: :destroy
 
   def self.order_by
     Studio.order("created_at desc")
@@ -12,4 +12,6 @@ class Studio < ApplicationRecord
   def order_by_name
     Yogi.order(:name)
   end
+
+
 end

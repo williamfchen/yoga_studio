@@ -41,6 +41,19 @@ RSpec.feature 'show yogi' do
         expect(page).to have_content('Member? No')
       end
 
+      scenario 'US20 displays a link to delete the child' do
+        studio = Studio.create!(name: "Flex", rating: 3, accepting_members: true)
+        tyler = Yogi.create!(name: "Tyler", age: 28, member: true, studio_id: studio.id)
+        
+        visit "/yogis/#{tyler.id}"
+
+        expect(page).to have_link('Delete Yogi', href: delete_yogi_path(tyler))
+
+        click_link('Delete Yogi')
+        
+        expect(page).to have_current_path(yogis_path)
+        expect(page).to_not have_content(tyler.name)
+      end
     end
   end
 end

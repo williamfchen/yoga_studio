@@ -39,7 +39,7 @@ RSpec.feature 'studio show page' do
 
         visit "/studios/#{studio.id}"
 
-        expect(page).to have_link('Update Studio', href: edit_studio_path(studio.id))
+        expect(page).to have_link('Update Studio', href: edit_studio_path(studio))
 
         click_link('Update Studio')
 
@@ -55,6 +55,26 @@ RSpec.feature 'studio show page' do
         expect(page).to have_content('Name: Stretch')
         expect(page).to have_content('Rating: 4')
         expect(page).to have_content('Accepting Members? No')
+      end
+
+      scenario 'US19 displays a link to delete the parent' do
+        studio = Studio.create!(name: "Flex", rating: 3, accepting_members: true)
+        tyler = Yogi.create!(name: "Tyler", age: 28, member: true, studio_id: studio.id)
+        antoine = Yogi.create!(name: "Antoine", age: 32, member: true, studio_id: studio.id)
+        
+        visit "/studios/#{studio.id}"
+
+        expect(page).to have_link('Delete Studio', href: delete_studio_path(studio))
+
+        click_link('Delete Studio')
+        
+        expect(page).to have_current_path(studios_path)
+        expect(page).to_not have_content(studio.name)
+
+        visit "/yogis"
+        
+        expect(page).to_not have_content(tyler.name)
+        expect(page).to_not have_content(antoine.name)
       end
     end
   end

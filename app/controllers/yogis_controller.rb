@@ -3,8 +3,8 @@ class YogisController < ApplicationController
     @yogis = Yogi.members
   end
 
-  def new
-  end
+  # def new
+  # end
   
   def show
     @yogi = Yogi.find(params[:id])
@@ -36,6 +36,11 @@ class YogisController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    Yogi.destroy
+    redirect_to '/yogis'
   end
 
   private
