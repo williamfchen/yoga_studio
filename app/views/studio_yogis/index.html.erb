@@ -4,7 +4,7 @@
 
 <p><%= form_tag studio_yogis_index_path(@studio), method: :get do %></p>
   <label for="min_age">Minimum Age:</label>
-  <input type="number" id="min_age" name="min_age" size="3" required>
+  <input type="number" id="min_age" name="min_age" required>
   
   <button type="submit">Filter by Minimum Age</button>
 <p><% end %></p>
@@ -37,3 +37,4 @@
 </table>
 
 <p><%= button_to 'New Yogi', new_studio_yogi_path(@studio), method: :get %></p>
+<p><%= button_to "All #{@studio.name} Yogis", studio_yogis_index_path(@studio), method: :get %></p>
