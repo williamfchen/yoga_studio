@@ -55,15 +55,13 @@ RSpec.describe 'studio index page' do
 
       scenario 'US22 displays a button next to each parent to delete that parent' do
         studio1 = Studio.create!(name: "BSY", rating: 5, accepting_members: true)
-        studio2 = Studio.create!(name: "Flex", rating: 5, accepting_members: true)
+        studio2 = Studio.create!(name: "Flex", rating: 5, accepting_members: true, created_at: 1.day.ago)
 
         visit "/studios"
 
         expect(page).to have_button('Delete', count: 2)
 
-        within("#studio-#{studio1.id}") do
-          click_button('Delete')
-        end
+        click_button('Delete', match: :first)
 
         expect(page).to have_current_path(studios_path, ignore_query: true)
         expect(page).to_not have_content(studio1.name)

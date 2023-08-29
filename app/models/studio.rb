@@ -8,5 +8,4 @@ class Studio < ApplicationRecord
   def yogis_count
     self.yogis.count
   end
-
 end
