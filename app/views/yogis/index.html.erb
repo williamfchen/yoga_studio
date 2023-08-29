@@ -1,5 +1,7 @@
 <h1>Yogi Members</h1>
 
+<a href="/yogis?member=true">Only Show Members</a>
+
 <table>
   <thead>
     <tr>
@@ -23,7 +25,7 @@
         <td><%= yogi.created_at %></td>
         <td><%= yogi.updated_at %></td>
         <td><%= link_to 'Edit', edit_yogi_path(yogi) %>
-        <td><%= button_to 'Delete', delete_yogi_path(yogi) %>
+        <td><%= button_to 'Delete', delete_yogi_path(yogi), method: :delete %>
       </tr>
     <% end %>
   </tbody>

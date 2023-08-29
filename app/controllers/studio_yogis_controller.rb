@@ -20,11 +20,9 @@ class StudioYogisController < ApplicationController
     @studio = Studio.find(params[:id])
     @yogi = @studio.yogis.build(yogi_params)
   
-    if @yogi.save
-      redirect_to studio_yogis_index_path(@studio)
-    else
-      render 'new_studio_yogi'
-    end
+    @yogi.save
+    
+    redirect_to studio_yogis_index_path(@studio)
   end
 
   private

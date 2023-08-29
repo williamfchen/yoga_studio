@@ -1,10 +1,9 @@
 <h1>Edit <%= @yogi.name %></h1>
-<%= form_with(url: update_yogi_path(@yogi), method: :patch) do |form| %>
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<%= form_with(url: update_yogi_path(@yogi), method: :patch, data: { turbo: false }) do |form| %>
   <label for="name">Name:</label>
   <%= form.text_field :name, required: true %><br><br>
 
-  <label for="age">Rating:</label>
+  <label for="age">Age:</label>
   <%= form.number_field :age, min: 16, max: 120, required: true %><br><br>
 
   <label for="member">Member?</label>

@@ -32,13 +32,13 @@ RSpec.feature 'application layout' do
       it 'US9 displays yogis link' do
         visit root_path
         
-        expect(page).to have_link('Yogi Members', href: yogis_path)
+        expect(page).to have_link('All Yogis', href: yogis_path)
       end
 
       it 'US9 navigates do the yogi index' do
         visit root_path
 
-        click_link('Yogi Members')
+        click_link('All Yogis')
         expect(page).to have_current_path(yogis_path)
       end
     end

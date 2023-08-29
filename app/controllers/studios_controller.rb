@@ -9,11 +9,9 @@ class StudiosController < ApplicationController
   def create
     @studio = Studio.new(studio_params)
     
-    if @studio.save
-      redirect_to '/studios'
-    else
-      render 'new'
-    end
+    @studio.save
+
+    redirect_to '/studios'
   end
 
   def show
@@ -27,11 +25,8 @@ class StudiosController < ApplicationController
 
   def update
     @studio = Studio.find(params[:id])
-    if @studio.update(studio_params)
-      redirect_to studio_path(@studio)
-    else
-      render 'edit'
-    end
+    @studio.update(studio_params)
+    redirect_to studio_path(@studio)
   end
 
   def destroy

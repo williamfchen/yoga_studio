@@ -96,6 +96,22 @@ RSpec.feature 'studio yogis index' do
         expect(page).to have_content(tyler.name)
         expect(page).to_not have_content(charles.name)
       end
+
+      scenario 'US23.2 displays a button next to each yogi to delete that yogi' do
+        studio = Studio.create!(name: "BSY", rating: 5, accepting_members: true)
+        tyler = Yogi.create!(name: "Tyler", age: 28, member: true, studio_id: studio.id)
+        antoine = Yogi.create!(name: "Antoine", age: 32, member: true, studio_id: studio.id)
+
+        visit "/studios/#{studio.id}/yogis"
+
+        expect(page).to have_button('Delete', count: 2)
+
+        click_button('Delete', match: :first)
+
+        expect(page).to have_current_path("/yogis")
+        expect(page).to have_content(antoine.name)
+        expect(page).to_not have_content(tyler.name)
+      end
     end
   end
 end

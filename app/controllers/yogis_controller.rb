@@ -1,6 +1,10 @@
 class YogisController < ApplicationController
   def index
-    @yogis = Yogi.members
+    if params[:member] == "true"
+      @yogis = Yogi.members
+    else  
+      @yogis = Yogi.all
+    end
   end
 
   def show
@@ -13,11 +17,8 @@ class YogisController < ApplicationController
 
   def update
     @yogi = Yogi.find(params[:id])
-    if @yogi.update(yogi_params)
-      redirect_to yogi_path(@yogi)
-    else
-      render 'edit'
-    end
+    @yogi.update(yogi_params)
+    redirect_to yogi_path(@yogi)
   end
 
   def destroy
