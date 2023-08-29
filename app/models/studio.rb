@@ -9,9 +9,4 @@ class Studio < ApplicationRecord
     self.yogis.count
   end
 
-  def order_by_name
-    Yogi.order(:name)
-  end
-
-
 end

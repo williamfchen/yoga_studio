@@ -1,0 +1,16 @@
+<h1>Add Yogi to <%= @studio.name %></h1>
+<%= form_with(url: studio_yogis_index_path(@studio), method: :post, data: { turbo: false} ) do |form| %>
+  <%= form.hidden_field :authenticity_token, value: form_authenticity_token %>
+
+  <label for="name">Name:</label>
+  <%= form.text_field :name, id: 'name', required: true %><br><br>
+
+  <label for="age">Age:</label>
+  <%= form.number_field :age, id: 'age', min: 1, max: 120, required: true %><br><br>
+
+  <label for="member">Member?</label>
+  <%= form.hidden_field :member, value: false %>
+  <%= form.check_box :member, id: 'member', value: true %><br><br>
+
+  <button type="submit">Add Yogi</button>
+<% end %>

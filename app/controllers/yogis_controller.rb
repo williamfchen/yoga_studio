@@ -3,29 +3,11 @@ class YogisController < ApplicationController
     @yogis = Yogi.members
   end
 
-  # def new
-  # end
-  
   def show
     @yogi = Yogi.find(params[:id])
   end
 
-  # def create
-  #   yogi = Yogi.new({
-  #     name: params[:name],
-  #     age: params[:rating],
-  #     member: params.key?(:member)
-  #     })
-
-  #   if yogi.save
-  #     redirect_to '/yogis'
-  #   else
-  #     render 'new'
-  #   end
-  # end
-
   def edit
-    # @studio = Studio.find(params[:id])
     @yogi = Yogi.find(params[:id])
   end
 
@@ -39,15 +21,14 @@ class YogisController < ApplicationController
   end
 
   def destroy
-    Yogi.destroy
+    @yogi = Yogi.find(params[:id])
+    @yogi.destroy
     redirect_to '/yogis'
   end
 
   private
 
   def yogi_params
-    params.require(:yogi).permit(:name, :age, :member)
+    params.permit(:name, :age, :member)
   end
-
-
 end

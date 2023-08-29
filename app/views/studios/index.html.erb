@@ -7,18 +7,19 @@
       <th>Yogis</th>
       <th>Created At</th>
       <th>Update</th>
+      <th>Delete</th>
     </tr>
-  </thead>
   <tbody>
     <% @studios.each do |studio| %>
       <tr>
         <td><%= link_to studio.name, studio_path(studio) %></td>
         <td><%= studio.yogis.count %></td>
         <td><%= studio.created_at %></td>
-        <td><%= link_to 'Edit', edit_studio_path(studio) %>
+        <td><%= link_to 'Edit', edit_studio_path(studio), method: :get %>
+        <td><%= button_to 'Delete', delete_studio_path(studio), method: :delete %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<p><%= link_to 'New Studio', new_studio_path %></p>
+<p><%= button_to 'New Studio', new_studio_path, method: :get %></p>

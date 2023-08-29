@@ -4,8 +4,8 @@ RSpec.feature 'show yogi' do
   describe 'as a visitor' do
     describe 'when visiting /child_table_name/:id' do
       scenario 'US4 displays child with attributes' do
-        studio1 = Studio.create!(name: "BSY", rating: 5, accepting_members: true)
-        tyler = Yogi.create!(name: "Tyler", age: 28, member: true, studio_id: studio1.id)
+        studio = Studio.create!(name: "BSY", rating: 5, accepting_members: true)
+        tyler = Yogi.create!(name: "Tyler", age: 28, member: true, studio_id: studio.id)
 
         visit "/yogis/#{tyler.id}"
 
@@ -23,15 +23,16 @@ RSpec.feature 'show yogi' do
 
         visit "/yogis/#{tyler.id}"
         
-        expect(page).to have_link('Update Yogi', href: edit_yogi_path(tyler))
+        expect(page).to have_button('Update Yogi')
 
-        click_link('Update Yogi')
+        click_button('Update Yogi')
 
+        expect(page).to have_current_path(edit_yogi_path(tyler))
         expect(page).to have_selector('form')
 
-        fill_in 'yogi[name]', with: 'Antoine'
-        fill_in 'yogi[age]', with: '54'
-        uncheck 'yogi[member]'
+        fill_in 'name', with: 'Antoine'
+        fill_in 'age', with: '54'
+        uncheck 'member'
 
         click_button 'Update Yogi'
 
@@ -47,9 +48,9 @@ RSpec.feature 'show yogi' do
         
         visit "/yogis/#{tyler.id}"
 
-        expect(page).to have_link('Delete Yogi', href: delete_yogi_path(tyler))
+        expect(page).to have_button('Delete Yogi')
 
-        click_link('Delete Yogi')
+        click_button('Delete Yogi')
         
         expect(page).to have_current_path(yogis_path)
         expect(page).to_not have_content(tyler.name)

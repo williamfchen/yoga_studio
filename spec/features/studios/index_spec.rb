@@ -28,16 +28,14 @@ RSpec.describe 'studio index page' do
       it 'US11 displays a link for a new parent' do
         visit "/studios"
         
-        expect(page).to have_link('New Studio', href: new_studio_path)
-      end
-      
-      it 'US11 uses a form to create a new parent' do
-        visit "/studios"
+        expect(page).to have_button('New Studio')
 
-        click_link('New Studio')
+        click_button('New Studio')
+
+        expect(page).to have_current_path("/studios/new")
         expect(page).to have_selector('form')
 
-        fill_in 'studio_name', with: 'BSY'
+        fill_in 'name', with: 'BSY'
         fill_in 'rating', with: 5
         check 'accepting_members'
 

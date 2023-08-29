@@ -7,9 +7,9 @@ class StudiosController < ApplicationController
   end
   
   def create
-    studio = Studio.new(studio_params)
+    @studio = Studio.new(studio_params)
     
-    if studio.save
+    if @studio.save
       redirect_to '/studios'
     else
       render 'new'
@@ -20,11 +20,6 @@ class StudiosController < ApplicationController
     @studio = Studio.find(params[:id])
     @count = @studio.yogis_count
   end
-
-  def show_yogis
-    @studio = Studio.find(params[:id])
-    @yogis = @studio.yogis.order_by_name
-end
 
   def edit
     @studio = Studio.find(params[:id])
@@ -39,22 +34,6 @@ end
     end
   end
 
-  def add_yogi
-    @studio = Studio.find(params[:id])
-    @yogi = Yogi.new
-  end
-
-  def create_yogi
-    @studio = Studio.find(params[:id])
-    @yogi = @studio.yogis.build(yogi_params)
-
-    if @yogi.save
-      redirect_to show_studio_yogis_path(@studio)
-    else
-      render 'add_yogi'
-    end
-  end
-
   def destroy
     @studio = Studio.find(params[:id])
     @studio.destroy
@@ -64,12 +43,6 @@ end
   private
 
   def studio_params
-    params.require(:studio).permit(:name, :rating, :accepting_members)
+    params.permit(:name, :rating, :accepting_members)
   end
-
-  def yogi_params
-    params.require(:yogi).permit(:name, :age, :member)
-  end
-
-
 end

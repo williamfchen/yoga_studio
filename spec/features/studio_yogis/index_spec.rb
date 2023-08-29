@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'show studio yogis' do
+RSpec.feature ' studio yogis index' do
   describe 'as a visitor' do
     describe 'when visiting /parents/:parent_id/child_table_name' do
       scenario 'US5 displays each child and atrributes associated with that parent' do
@@ -25,19 +25,20 @@ RSpec.feature 'show studio yogis' do
 
         visit "/studios/#{studio.id}/yogis"
 
-        expect(page).to have_link('Add Yogi', href: add_yogi_path(studio))
+        expect(page).to have_button('New Yogi')
 
-        click_link('Add Yogi')
+        click_button('New Yogi')
 
+        expect(page).to have_current_path("/studios/#{studio.id}/yogis/new")
         expect(page).to have_selector('form')
 
-        fill_in 'yogi[name]', with: 'Tyler'
-        fill_in 'yogi[age]', with: '28'
-        check 'yogi[member]'
+        fill_in 'name', with: 'Tyler'
+        fill_in 'age', with: '28'
+        check 'member'
 
         click_button 'Add Yogi'
 
-        expect(page).to have_current_path(show_studio_yogis_path(studio))
+        expect(page).to have_current_path(studio_yogis_index_path(studio))
         expect(page).to have_content('Tyler')
         expect(page).to have_content(28)
         expect(page).to have_content('Yes')
