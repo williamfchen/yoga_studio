@@ -1,2 +1,3 @@
 class StudioYogi < ApplicationRecord
+  
 end

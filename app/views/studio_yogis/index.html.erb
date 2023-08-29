@@ -2,6 +2,13 @@
 <h3>Studio ID: <%= @studio.id %></h3>
 <a href="/studios/<%= @studio.id %>/yogis?sort=true">Sort by Name</a>
 
+<p><%= form_tag studio_yogis_index_path(@studio), method: :get do %></p>
+  <label for="min_age">Minimum Age:</label>
+  <input type="number" id="min_age" name="min_age" size="3" required>
+  
+  <button type="submit">Filter by Minimum Age</button>
+<p><% end %></p>
+
 <table>
   <thead>
     <tr>

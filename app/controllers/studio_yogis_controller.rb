@@ -4,6 +4,8 @@ class StudioYogisController < ApplicationController
 
     if params[:sort] == "true"
       @yogis = @studio.yogis.order_by_name
+    elsif params[:min_age].present?
+      @yogis = @studio.yogis.where('age >= ?', params[:min_age])
     else
       @yogis = @studio.yogis
     end
