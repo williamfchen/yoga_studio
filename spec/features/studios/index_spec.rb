@@ -52,8 +52,24 @@ RSpec.describe 'studio index page' do
 
         expect(page).to have_link('Edit', href: edit_studio_path(studio))
       end
+
+      scenario 'US22 displays a button next to each parent to delete that parent' do
+        studio1 = Studio.create!(name: "BSY", rating: 5, accepting_members: true)
+        studio2 = Studio.create!(name: "Flex", rating: 5, accepting_members: true)
+
+        visit "/studios"
+
+        expect(page).to have_button('Delete', count: 2)
+
+        within("#studio-#{studio1.id}") do
+          click_button('Delete')
+        end
+
+        expect(page).to have_current_path(studios_path, ignore_query: true)
+        expect(page).to_not have_content(studio1.name)
+        expect(page).to have_content(studio2.name)
+      end
     end
   end
-
 end
 
